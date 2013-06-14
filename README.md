@@ -73,7 +73,7 @@ To install LZOP follow the instructions at https://github.com/kevinweil/hadoop-l
 ####  Run an example
 <pre><code># copy the input files into HDFS
 hadoop fs -mkdir /tmp
-hadoop fs -put test-data/ch1/* /tmp/
+hadoop fs -put you-test-data/* /tmp/
 
 # replace the path below with the location of your Hadoop installation
 # this isn't required if you are running CDH3
