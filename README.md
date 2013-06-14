@@ -5,8 +5,8 @@ Some code are collected for learning big data and hadoop and reusing at work.
 
 ## Table Content
 #### The ptn0xx is about Hadoop Map and Reduce
-* ptn001: default and standard map and reduce program
-* ptn002: 
+* ptn001: Default and standard map and reduce program
+* ptn002: Database input to HDFS or HDFS output to database
 * ptn003:
 * ptn004:   
 * ptn005: 
@@ -80,5 +80,5 @@ hadoop fs -put test-data/ch1/* /tmp/
 export HADOOP_HOME=/usr/local/hadoop
 
 # run the map-reduce job
-bin/run.sh com.manning.hip.ch1.InvertedIndexMapReduce /tmp/file1.txt /tmp/file2.txt output
+bin/run.sh ptn001.InvertedIndexMapReduce /tmp/file1.txt /tmp/file2.txt output
 </code></pre>
