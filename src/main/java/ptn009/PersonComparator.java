@@ -1,5 +1,7 @@
-package com.manning.hip.ch4.sort.secondary;
-
+package ptn009;
+/*
+ * Sorting
+ */
 import org.apache.hadoop.io.*;
 
 public class PersonComparator extends WritableComparator {
@@ -7,7 +9,9 @@ public class PersonComparator extends WritableComparator {
     super(Person.class, true);
   }
 
-  @Override
+  
+@Override
+@SuppressWarnings("rawtypes")
   public int compare(WritableComparable w1, WritableComparable w2) {
 
     Person p1 = (Person) w1;

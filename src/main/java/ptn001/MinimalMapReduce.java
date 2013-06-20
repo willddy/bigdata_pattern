@@ -1,6 +1,8 @@
 package ptn001;
-
-// == MinimalMapReduce The simplest possible MapReduce driver, which uses the defaults
+/*
+ * MinimalMapReduce The simplest possible MapReduce driver, which uses the defaults
+ * and extends Configured implements Tool
+ */
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.mapreduce.Job;
@@ -9,7 +11,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-// vv MinimalMapReduce
+// MinimalMapReduce
 public class MinimalMapReduce extends Configured implements Tool {
   
   @Override
@@ -33,4 +35,4 @@ public class MinimalMapReduce extends Configured implements Tool {
     System.exit(exitCode);
   }
 }
-// ^^ MinimalMapReduce
+

@@ -1,6 +1,7 @@
 package ptn005.slove01;
-
-import com.manning.hip.ch3.avro.gen.Stock;
+/*
+ * Read Avro files to HDFS
+ */
 import org.apache.avro.file.DataFileStream;
 import org.apache.avro.specific.SpecificDatumReader;
 import org.apache.commons.lang.builder.ToStringBuilder;
@@ -16,15 +17,13 @@ import java.io.InputStream;
 public class AvroStockFileRead {
 
   public static void readFromAvro(InputStream is) throws IOException {
-    DataFileStream<Stock> reader =     //<co id="ch03_smallfileread_comment1"/>
-        new DataFileStream<Stock>(
-            is,
-            new SpecificDatumReader<Stock>(Stock.class));
-
-    for (Stock a : reader) {          //<co id="ch03_smallfileread_comment2"/>
-      System.out.println(ToStringBuilder.reflectionToString(a,
-          ToStringStyle.SIMPLE_STYLE
-      ));
+	//use avro's file container deserialization class to read from input stream
+    DataFileStream<Stock> reader =     
+        new DataFileStream<Stock>(is,new SpecificDatumReader<Stock>(Stock.class));
+    
+  //loop through the stock objects to help dump all members to console
+    for (Stock a : reader) {          
+      System.out.println(ToStringBuilder.reflectionToString(a,ToStringStyle.SIMPLE_STYLE));
     }
 
     IOUtils.closeStream(is);

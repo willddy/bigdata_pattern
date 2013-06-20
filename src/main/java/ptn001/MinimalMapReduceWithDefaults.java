@@ -1,6 +1,7 @@
 package ptn001;
-
-// MinimalMapReduceWithDefaults A minimal MapReduce driver, with the defaults explicitly set
+/*
+ * MinimalMapReduceWithDefaults A minimal MapReduce driver, with the defaults explicitly set
+ */
 import org.apache.hadoop.conf.Configured;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.LongWritable;
@@ -59,4 +60,4 @@ public class MinimalMapReduceWithDefaults extends Configured implements Tool {
     System.exit(exitCode);
   }
 }
-// ^^ MinimalMapReduceWithDefaults
+

@@ -1,5 +1,7 @@
 package common;
-
+/*
+ * Used 
+ */
 import org.apache.commons.logging.*;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;

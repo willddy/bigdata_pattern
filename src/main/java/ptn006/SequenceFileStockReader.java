@@ -1,6 +1,5 @@
-package com.manning.hip.ch3.seqfile;
+package ptn006;
 
-import com.manning.hip.ch3.StockPriceWritable;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;
@@ -18,7 +17,7 @@ public class SequenceFileStockReader {
     Configuration conf = new Configuration();
     FileSystem fs = FileSystem.get(conf);
 
-    SequenceFile.Reader reader =   //<co id="ch03_comment_seqfile_read1"/>
+    SequenceFile.Reader reader =   //create reader to read from sequence file
         new SequenceFile.Reader(fs, inputPath, conf);
 
     try {
@@ -28,7 +27,7 @@ public class SequenceFileStockReader {
       Text key = new Text();
       StockPriceWritable value = new StockPriceWritable();
 
-      while (reader.next(key, value)) {   //<co id="ch03_comment_seqfile_read2"/>
+      while (reader.next(key, value)) {   
         System.out.println(key + "," + value);
       }
     } finally {

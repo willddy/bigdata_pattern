@@ -1,4 +1,4 @@
-package com.manning.hip.ch4.sort.secondary;
+package ptn009;
 
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.mapreduce.Partitioner;

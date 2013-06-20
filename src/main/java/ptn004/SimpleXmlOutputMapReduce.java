@@ -1,5 +1,7 @@
 package ptn004;
-
+/*
+ * HDFS to XML files
+ */
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;

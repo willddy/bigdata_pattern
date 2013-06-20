@@ -1,7 +1,5 @@
-package com.manning.hip.ch3.seqfile;
+package ptn006;
 
-import com.manning.hip.ch3.StockPriceWritable;
-import com.manning.hip.ch3.csv.CSVParser;
 import org.apache.commons.io.FileUtils;
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -24,7 +22,7 @@ public class SequenceFileStockWriter {
     Configuration conf = new Configuration();
     FileSystem fs = FileSystem.get(conf);
 
-    SequenceFile.Writer writer =    //<co id="ch03_comment_seqfile_write1"/>
+    SequenceFile.Writer writer =    //sequence file writer with block level compression
         SequenceFile.createWriter(fs, conf, outputPath, Text.class,
             StockPriceWritable.class,
             SequenceFile.CompressionType.BLOCK,
@@ -32,13 +30,12 @@ public class SequenceFileStockWriter {
     try {
       Text key = new Text();
 
-      for (String line : FileUtils.readLines(inputFile)) {   //<co id="ch03_comment_seqfile_write2"/>
+      for (String line : FileUtils.readLines(inputFile)) {   
         StockPriceWritable stock = StockPriceWritable.fromLine(line);
         key.set(stock.getSymbol());
 
         key.set(stock.getSymbol());
-        writer.append(key,
-            stock);        //<co id="ch03_comment_seqfile_write4"/>
+        writer.append(key, stock);        //append a record to the sequence file
       }
     } finally {
       writer.close();

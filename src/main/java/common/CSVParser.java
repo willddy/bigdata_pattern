@@ -1,5 +1,7 @@
-package com.manning.hip.ch3.csv;
-
+package common;
+/*
+ * Used 
+ */
 /**
  Copyright 2005 Bytecode Pty Ltd.
 
@@ -230,7 +232,7 @@ public class CSVParser {
                         if (i > 2 //not on the beginning of the line
                                 && nextLine.charAt(i - 1) != this.separator //not at the beginning of an escape sequence
                                 && nextLine.length() > (i + 1) &&
-                                nextLine.charAt(i + 1) != this.separator //not at the	end of an escape sequence
+                                nextLine.charAt(i + 1) != this.separator //not at the end of an escape sequence
                                 ) {
 
                             if (ignoreLeadingWhiteSpace && sb.length() > 0 && isAllWhiteSpace(sb)) {

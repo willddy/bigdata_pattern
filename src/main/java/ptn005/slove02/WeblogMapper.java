@@ -1,4 +1,4 @@
-package com.packt.hadoop.hdfs.ch2.avro;
+package ptn005.slove02;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -13,6 +13,7 @@ import org.apache.hadoop.mapred.Mapper;
 import org.apache.hadoop.mapred.OutputCollector;
 import org.apache.hadoop.mapred.Reporter;
 
+@SuppressWarnings("rawtypes")
 public class WeblogMapper extends MapReduceBase implements Mapper<LongWritable, Text, AvroWrapper, NullWritable> {
     
     private AvroWrapper<WeblogRecord> outputRecord = new AvroWrapper<WeblogRecord>();

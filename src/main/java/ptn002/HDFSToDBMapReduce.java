@@ -15,7 +15,7 @@ import org.apache.hadoop.mapreduce.lib.input.*;
 import java.io.*;
 import java.sql.*;
 
-public class DBOutputMapReduce {  
+public class HDFSToDBMapReduce {  
 	  
 	   public static class StudentinfoRecord implements Writable,  DBWritable {  
 	     int id;  
@@ -60,7 +60,7 @@ public class DBOutputMapReduce {
 	   public static void main(String[] args) throws IOException, Exception {  
 		 Configuration conf = new Configuration();
 		 Job job = new Job(conf);
-		 job.setJarByClass(DBInputMapReduce.class);
+		 job.setJarByClass(HDFSToDBMapReduce.class);
 	     job.setInputFormatClass(TextInputFormat.class);  
 	     job.setOutputFormatClass(DBOutputFormat.class);  
 	     

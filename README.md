@@ -3,17 +3,17 @@ Big Data Pattern and Samples
 ## Objectives
 Some code are collected for learning big data and hadoop and reusing at work.
 
-## Table Content
-#### The ptn0xx is about Hadoop Map and Reduce
-* ptn001: Default and standard map and reduce program
-* ptn002: Database input to HDFS or HDFS output to database
-* ptn003:
-* ptn004:   
-* ptn005: 
-* ptn006:
-* ptn007: 
-* ptn008: 
-* ptn009:
+## Table of Content
+#### The ptn0xx is about MapReduce
+* ptn001: Default MapReduce program, extends Configured implements Tool, invert index Sample
+* ptn002: Database to HDFS, HDFS to database
+* ptn003: HBase to HDFS, HDFS to HBase
+* ptn004: XML to HDFS, HDFS to XML, customized Inputformat for XML
+* ptn005: Two ways to read and write Avro files
+* ptn006: Sequence file reader and writer, customized WritableComparable
+* ptn007: Customized key, value, InputFormat, RecordReader, Partitioner
+* ptn008: Use distributed cache
+* ptn009: Secondary and global sorting
 * ptn010: 
 * ptn011: 
 * ptn012:
@@ -25,18 +25,7 @@ Some code are collected for learning big data and hadoop and reusing at work.
 #### The ptn2xx is about Hive
 #### The ptn3xx is about Pig
 #### The ptn4xx is about HBase
-* To be added
-## Code Stability
-
-The book is currently in the middle of being authored, and as such the
-code in this repository will be changing until we get closer to the
-production stage.  With that being said, most of the code in GitHub has been
-exercised at least once.
-
-##  Issues
-
-If you hit any compilation or execution problems please create an issue
-and I'll look into it as soon as I can.
+* ptn400: CRUD Operations in terms of put, get, delete.
 
 ## Hadoop Version
 
@@ -46,14 +35,14 @@ where I utilize some features in Pig 0.9.1, which won't work with CDH3u1
 which uses 0.8.1.
 
 
-## Building and running
+## Building and Running
 
-####  Download from github
+#### Download 
 
 <pre><code>git clone git://github.com/willddy/bigdata_pattern.git
 </code></pre>
 
-####  Build
+#### Build
 
 <pre><code>cd bigdata_pattern
 mvn package
@@ -61,8 +50,7 @@ mvn package
 
 #### Runtime Dependencies
 
-Many of the examples use Snappy and LZOP compression.  Therefore
-you may get runtime errors if you don't have them installed and configured
+Many of the examples use Snappy and LZOP compression.  Therefore you may get runtime errors if you don't have them installed and configured
 in your cluster.
 
 Snappy can be installed on CDH by following the instructions at
@@ -70,7 +58,7 @@ Snappy can be installed on CDH by following the instructions at
 
 To install LZOP follow the instructions at https://github.com/kevinweil/hadoop-lzo.
 
-####  Run an example
+#### Run an example
 <pre><code># copy the input files into HDFS
 hadoop fs -mkdir /tmp
 hadoop fs -put you-test-data/* /tmp/

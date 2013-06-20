@@ -19,7 +19,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import java.io.*;
 import java.sql.*;
 
-public class DBInputMapReduce {  
+public class DBToHDFSMapReduce {  
   
    public static class StudentinfoRecord implements Writable, DBWritable {  
      int id;  
@@ -57,7 +57,7 @@ public class DBInputMapReduce {
    public static void main(String[] args) throws IOException, Exception {  
 	   Configuration conf = new Configuration();
 	   Job job = new Job(conf);
-	   job.setJarByClass(DBInputMapReduce.class);  
+	   job.setJarByClass(DBToHDFSMapReduce.class);  
 	   DistributedCache.addFileToClassPath(new Path(  
           "/lib/mysql-connector-java-5.1.0-bin.jar"), conf);  
        

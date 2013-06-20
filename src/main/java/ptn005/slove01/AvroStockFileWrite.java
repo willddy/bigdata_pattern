@@ -1,7 +1,7 @@
-package com.manning.hip.ch3.avro;
-
-import com.manning.hip.ch3.csv.CSVParser;
-import com.manning.hip.ch3.avro.gen.Stock;
+package ptn005.slove01;
+/*
+ * Write Avro files from HDFS
+ */
 import org.apache.avro.file.CodecFactory;
 import org.apache.avro.file.DataFileWriter;
 import org.apache.avro.specific.SpecificDatumWriter;
@@ -14,6 +14,8 @@ import org.apache.hadoop.io.IOUtils;
 import java.io.File;
 import java.io.IOException;
 import java.io.OutputStream;
+
+import common.CSVParser;
 
 public class AvroStockFileWrite {
 
@@ -36,19 +38,18 @@ public class AvroStockFileWrite {
     return stock;
   }
 
+  @SuppressWarnings("resource")
   public static void writeToAvro(File inputFile, OutputStream outputStream)
       throws IOException {
 
-    DataFileWriter<Stock> writer = //<co id="ch03_avrospecific_comment1"/>
-        new DataFileWriter<Stock>(
-            new SpecificDatumWriter<Stock>())
-        .setSyncInterval(100);       //<co id="ch03_avrospecific_comment2"/>
+	DataFileWriter<Stock> writer = //a writer to write Avro
+        new DataFileWriter<Stock>(new SpecificDatumWriter<Stock>()).setSyncInterval(100);      
 
-    writer.setCodec(CodecFactory.snappyCodec());   //<co id="ch03_avrospecific_comment3"/>
-    writer.create(Stock.SCHEMA$, outputStream);    //<co id="ch03_avrospecific_comment4"/>
+    writer.setCodec(CodecFactory.snappyCodec());   
+    writer.create(Stock.SCHEMA$, outputStream);    //identify the schema
 
     for(String line: FileUtils.readLines(inputFile)) {
-      writer.append(createStock(line));     //<co id="ch03_avrospecific_comment5"/>
+      writer.append(createStock(line));     //write to Avro file
     }
 
     IOUtils.closeStream(writer);

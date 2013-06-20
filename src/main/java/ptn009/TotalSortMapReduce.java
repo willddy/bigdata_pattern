@@ -1,5 +1,7 @@
-package com.manning.hip.ch4.sort.total;
-
+package ptn009;
+/*
+ * Total sorting without using single reducer
+ */
 
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.*;
@@ -19,14 +21,11 @@ public final class TotalSortMapReduce {
     Path partitionFile = new Path(args[1]);
     Path output = new Path(args[2]);
 
-    InputSampler.Sampler<Text, Text> sampler =
-        new InputSampler.RandomSampler<Text,Text>
-            (0.1,
-             10000,
-             10);
+    InputSampler.Sampler<Text, Text> sampler = 
+    		new InputSampler.RandomSampler<Text,Text> (0.1, 10000, 10);
 
     JobConf job = new JobConf();
-
+    job.setJarByClass(TotalSortMapReduce.class);
     job.setNumReduceTasks(numReducers);
 
     job.setInputFormat(KeyValueTextInputFormat.class);
@@ -36,14 +35,12 @@ public final class TotalSortMapReduce {
     job.setMapOutputKeyClass(Text.class);
     job.setMapOutputValueClass(Text.class);
 
-    TotalOrderPartitioner.setPartitionFile(job, partitionFile);
-    FileInputFormat.setInputPaths(job, input);
-    FileOutputFormat.setOutputPath(job, output);
-
+    TotalOrderPartitioner.setPartitionFile(job, partitionFile); //not migrate to New API yet
     InputSampler.writePartitionFile(job, sampler);
 
-    job.setJarByClass(TotalSortMapReduce.class);
-
+    FileInputFormat.setInputPaths(job, input);
+    FileOutputFormat.setOutputPath(job, output);
+    
     output.getFileSystem(job).delete(output, true);
 
     JobClient.runJob(job);

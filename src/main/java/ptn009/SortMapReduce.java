@@ -1,5 +1,7 @@
-package com.manning.hip.ch4.sort.secondary;
-
+package ptn009;
+/*
+ * Secondary sort/composite key sort
+ */
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -66,8 +68,7 @@ public final class SortMapReduce {
     Text lastName = new Text();
 
     @Override
-    public void reduce(Person key, Iterable<Text> values,
-                       Context context)
+    public void reduce(Person key, Iterable<Text> values, Context context)
         throws IOException, InterruptedException {
       lastName.set(key.getLastName());
       for (Text firstName : values) {

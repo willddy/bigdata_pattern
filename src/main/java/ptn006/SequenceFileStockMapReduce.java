@@ -1,6 +1,7 @@
 package ptn006;
-
-import com.manning.hip.ch3.StockPriceWritable;
+/*
+ * Process sequence file with default identity mapper and reducer
+ */
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
 import org.apache.hadoop.io.SequenceFile;
@@ -17,22 +18,19 @@ public class SequenceFileStockMapReduce {
     runJob(args[0], args[1]);
   }
 
-  public static void runJob(String input,
-                            String output)
-      throws Exception {
+  public static void runJob(String input,String output) throws Exception {
     Configuration conf = new Configuration();
     Job job = new Job(conf);
-    job.setJarByClass(SequenceFileStockMapReduce.class);
+    job.setJarByClass(conf.getClass());
     job.setOutputKeyClass(Text.class);
     job.setOutputValueClass(StockPriceWritable.class);
-    job.setInputFormatClass(
-        SequenceFileInputFormat.class); //<co id="ch03_comment_seqfile_mr1"/>
-    job.setOutputFormatClass(SequenceFileOutputFormat.class);  //<co id="ch03_comment_seqfile_mr2"/>
-    SequenceFileOutputFormat.setCompressOutput(job, true);  //<co id="ch03_comment_seqfile_mr3"/>
-    SequenceFileOutputFormat.setOutputCompressionType(job,  //<co id="ch03_comment_seqfile_mr4"/>
-        SequenceFile.CompressionType.BLOCK);
-    SequenceFileOutputFormat.setOutputCompressorClass(job,  //<co id="ch03_comment_seqfile_mr5"/>
-        DefaultCodec.class);
+    job.setInputFormatClass(SequenceFileInputFormat.class); 
+    job.setOutputFormatClass(SequenceFileOutputFormat.class);  
+    SequenceFileOutputFormat.setCompressOutput(job, true);  //compress output
+    //set block level compression. You can also set to record level
+    SequenceFileOutputFormat.setOutputCompressionType(job,SequenceFile.CompressionType.BLOCK);
+    //default compression - DEFLATE
+    SequenceFileOutputFormat.setOutputCompressorClass(job,DefaultCodec.class);
 
     FileInputFormat.setInputPaths(job, new Path(input));
     Path outPath = new Path(output);

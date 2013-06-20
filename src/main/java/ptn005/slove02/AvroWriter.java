@@ -1,4 +1,4 @@
-package com.packt.hadoop.hdfs.ch2.avro;
+package ptn005.slove02;
 
 import org.apache.avro.Schema;
 import org.apache.avro.mapred.AvroJob;

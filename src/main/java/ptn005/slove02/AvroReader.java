@@ -1,5 +1,4 @@
-package com.packt.hadoop.hdfs.ch2.avro;
-
+package ptn005.slove02;
 
 import org.apache.avro.Schema;
 import org.apache.avro.mapred.AvroJob;
@@ -35,12 +34,17 @@ public class AvroReader extends Configured implements Tool {
         JobConf weblogJob = new JobConf(conf, getClass());
         weblogJob.setJobName("Avro Reader");
         weblogJob.setNumReduceTasks(0);
+        
         AvroJob.setInputSchema(weblogJob, schema);
+        
         weblogJob.setMapperClass(WeblogMapperAvro.class);
+        
         AvroJob.setReflect(weblogJob);
+        
         weblogJob.setOutputKeyClass(Text.class);
         weblogJob.setOutputValueClass(NullWritable.class);
         weblogJob.setOutputFormat(TextOutputFormat.class);
+        
         FileInputFormat.setInputPaths(weblogJob, inputPath);
         FileOutputFormat.setOutputPath(weblogJob, outputPath);
         RunningJob job = JobClient.runJob(weblogJob);

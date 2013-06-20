@@ -1,5 +1,7 @@
-package com.manning.hip.ch4.sort.secondary;
-
+package ptn009;
+/*
+ * Grouping, only cares about LastName
+ */
 import org.apache.hadoop.io.*;
 
 public class PersonNameComparator extends WritableComparator {
@@ -9,6 +11,7 @@ public class PersonNameComparator extends WritableComparator {
   }
 
   @Override
+  @SuppressWarnings("rawtypes")
   public int compare(WritableComparable o1, WritableComparable o2) {
 
     Person p1 = (Person) o1;
