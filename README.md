@@ -5,36 +5,37 @@ Some code are collected for learning big data and hadoop and reusing at work.
 
 ## Table of Content
 #### The ptn0xx is about MapReduce & HDFS
-* ../java/common: Commonly shared utility and tools
-* ../java/ptn001: Default MapReduce program, ToolRunner, Debug&Counter, Invert index sample
-* ../java/ptn002: Database to HDFS, HDFS to database
-* ../java/ptn003: HBase to HDFS, HDFS to HBase
-* ../java/ptn004: XML to HDFS, HDFS to XML, customized Inputformat for XML
-* ../java/ptn005: Two ways to read and write Avro files
-* ../java/ptn006: Sequence file reader and writer, customized WritableComparable
-* ../java/ptn007: Customized key, value, InputFormat, RecordReader, Partitioner
-* ../java/ptn008: Use distributed cache
-* ../java/ptn009: Secondary and global sorting
-* ../java/ptn010: Combine small files into big ones by Avro, sequence files, and CombineFileInputFormat
-* ../java/ptn011: Read and write compressed files and LZOP
-* ../java/ptn012: Log processing utility
-* ../java/ptn013: Split reader to exam split content
+* __/java/common:__ Commonly shared utility and tools
+* __/java/ptn001:__ Default MapReduce program, ToolRunner, Debug&Counter, Invert index sample
+* __/java/ptn002:__ Database to HDFS, HDFS to database
+* __/java/ptn003:__ HBase to HDFS, HDFS to HBase
+* __/java/ptn004:__ XML to HDFS, HDFS to XML, customized Inputformat for XML
+* __/java/ptn005:__ Two ways to read and write Avro files
+* __/java/ptn006:__ Sequence file reader and writer, customized WritableComparable
+* __/java/ptn007:__ Customized key, value, InputFormat, RecordReader, Partitioner
+* __/java/ptn008:__ Use distributed cache
+* __/java/ptn009:__ Secondary and global sorting
+* __/java/ptn010:__ Combine small files into big ones by Avro, SequenceFiles, CombineFileInputFormat
+* __/java/ptn011:__ Read and write compressed files and LZOP
+* __/java/ptn012:__ Log processing utility
+* __/java/ptn013:__ Split reader to exam split content
 
 #### The ptn1xx is about MRUnit
-* ../java/ptn101: JUnit help class for MRUnit
-* ../java/ptn102: Identity Map and Reduce test
+* __/java/ptn101:__ JUnit help class for MRUnit
+* __/java/ptn102:__ Identity Map and Reduce test
 
 #### The ptn2xx is about Hive
-* ../java/ptn201: Hive UDF, UDAF, and GenericUDF
-* ../java/ptn202: Hive SerDe
+* __/java/ptn201:__ Hive UDF, UDAF, and GenericUDF
+* __/java/ptn202:__ Hive SerDe
 
 #### The ptn3xx is about Pig
-* ../java/ptn301: Pig customized store/load function for common log and sequencefile (sequencefile is not pig natively support)
-* ../java/ptn302: Pig UDF for LoadFunc, EvalFunc, and FilterFunc
-* ../java/ptn303: Pig UDF for LoadFunc, EvalFunc, and FilterFunc
+* __/java/ptn301:__ Pig customized store/load function for common log and sequencefile
+* __/java/ptn302:__ Pig UDF for LoadFunc, EvalFunc, and FilterFunc
+* __/java/ptn303:__ Pig UDF for LoadFunc, EvalFunc, and FilterFunc
 
 #### The ptn4xx is about HBase
-* ../java/ptn400: CRUD Operations in terms of put, get, delete.
+* __/java/ptn401:__ HBase CRUD Operations in terms of put, get, delete. 
+* __/java/ptn402:__ HBase scan and row locking.
 
 ## Hadoop Version
 
@@ -62,9 +63,9 @@ mvn package
 Many of the examples use Snappy and LZOP compression.  Therefore you may get runtime errors if you don't have them installed and configured
 in your cluster.
 
-Snappy can be installed on CDH by following the instructions at https://ccp.cloudera.com/display/CDHDOC/Snappy+Installation.
+Snappy can be installed on CDH by following the instructions at [here](https://ccp.cloudera.com/display/CDHDOC/Snappy+Installation)
 
-To install LZOP follow the instructions at https://github.com/kevinweil/hadoop-lzo.
+To install LZOP follow the instructions [here](https://github.com/kevinweil/hadoop-lzo)
 
 #### Run an example
 <pre><code># copy the input files into HDFS
@@ -72,7 +73,7 @@ hadoop fs -mkdir /tmp
 hadoop fs -put you-test-data/* /tmp/
 
 # replace the path below with the location of your Hadoop installation
-# this isn't required if you are running CDH3
+# this isn't required if you are running CDH3, for example
 export HADOOP_HOME=/usr/local/hadoop
 
 # run the map-reduce job
