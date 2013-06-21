@@ -1,5 +1,5 @@
 package ptn009;
-/*
+/**
  * Grouping, only cares about LastName
  */
 import org.apache.hadoop.io.*;

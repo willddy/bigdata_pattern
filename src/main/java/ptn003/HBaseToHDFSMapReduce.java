@@ -1,5 +1,5 @@
 package ptn003;
-/*
+/**
  * Import data from HBase to HDFS using map and reduce
  */
 import org.apache.hadoop.conf.Configuration;

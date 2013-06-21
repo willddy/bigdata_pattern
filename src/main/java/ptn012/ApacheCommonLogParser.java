@@ -1,4 +1,4 @@
-package com.manning.hip.common;
+package ptn012;
 
 /**
  Copyright 2005 Bytecode Pty Ltd.
@@ -31,6 +31,7 @@ import java.util.List;
  * them.
  *
  */
+@SuppressWarnings("serial")
 public class ApacheCommonLogParser implements Serializable {
 
     private final char[] separators;

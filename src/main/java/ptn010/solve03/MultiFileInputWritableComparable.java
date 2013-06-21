@@ -1,3 +1,5 @@
+package ptn010.solve03;
+
 import java.io.DataInput;
 import java.io.DataOutput;
 import java.io.IOException;

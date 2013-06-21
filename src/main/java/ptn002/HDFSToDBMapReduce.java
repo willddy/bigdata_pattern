@@ -1,6 +1,5 @@
 package ptn002;
-
-/*
+/**
  * Export data from HDFS to MySQL
  */
 import org.apache.hadoop.conf.Configuration;

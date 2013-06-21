@@ -1,4 +1,4 @@
-package com.manning.hip.common;
+package ptn012;
 
 import org.apache.hadoop.io.Writable;
 import org.apache.hadoop.io.WritableUtils;

@@ -1,4 +1,4 @@
-package com.manning.hip.common;
+package ptn012;
 
 import org.apache.commons.lang.StringUtils;
 import org.apache.hadoop.io.Text;

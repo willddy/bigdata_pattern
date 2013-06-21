@@ -1,4 +1,8 @@
-// cc WholeFileRecordReader The RecordReader used by WholeFileInputFormat for reading a whole file as a record
+package ptn010.solve02;
+/**
+ * WholeFileRecordReader The RecordReader used by WholeFileInputFormat 
+ * for reading a whole file as a record
+ */
 import java.io.IOException;
 
 import org.apache.hadoop.conf.Configuration;
@@ -13,7 +17,6 @@ import org.apache.hadoop.mapreduce.RecordReader;
 import org.apache.hadoop.mapreduce.TaskAttemptContext;
 import org.apache.hadoop.mapreduce.lib.input.FileSplit;
 
-//vv WholeFileRecordReader
 class WholeFileRecordReader extends RecordReader<NullWritable, BytesWritable> {
   
   private FileSplit fileSplit;
@@ -29,6 +32,10 @@ class WholeFileRecordReader extends RecordReader<NullWritable, BytesWritable> {
   }
   
   @Override
+  /*
+   * Core part to process file content. file name is processed in mapper level in the 
+   * setup(...) per mapper basis. Here, leave it as NullWritable
+   */
   public boolean nextKeyValue() throws IOException, InterruptedException {
     if (!processed) {
       byte[] contents = new byte[(int) fileSplit.getLength()];

@@ -1,5 +1,5 @@
 package ptn005.slove01;
-/*
+/**
  * Read Avro files to HDFS
  */
 import org.apache.avro.file.DataFileStream;

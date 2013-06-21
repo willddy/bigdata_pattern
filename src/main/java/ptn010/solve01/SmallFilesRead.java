@@ -1,5 +1,8 @@
-package com.manning.hip.ch5;
-
+package ptn010.solve01;
+/**
+ * Using Avro to store multiple small files
+ * read Avro files from HDFS for verification
+ */
 import org.apache.avro.file.DataFileStream;
 import org.apache.avro.generic.*;
 import org.apache.commons.codec.digest.DigestUtils;
@@ -17,16 +20,16 @@ public class SmallFilesRead {
   private static final String FIELD_CONTENTS = "contents";
 
   public static void readFromAvro(InputStream is) throws IOException {
-    DataFileStream<Object> reader =                   //<co id="ch02_smallfileread_comment1"/>
-        new DataFileStream<Object>(
-            is, new GenericDatumReader<Object>());
-    for (Object o : reader) {                         //<co id="ch02_smallfileread_comment2"/>
-      GenericRecord r = (GenericRecord) o;            //<co id="ch02_smallfileread_comment3"/>
-      System.out.println(                             //<co id="ch02_smallfileread_comment4"/>
-          r.get(FIELD_FILENAME) +
-              ": " +
-              DigestUtils.md5Hex(
-                  ((ByteBuffer) r.get(FIELD_CONTENTS)).array()));
+    /*
+     * create reader without schema since Avro encodes that i the Avro file
+     */
+	  DataFileStream<Object> reader =               
+        new DataFileStream<Object>(is, new GenericDatumReader<Object>());
+    for (Object o : reader) {                         //loop every record in Avro file
+      GenericRecord r = (GenericRecord) o;            //cast each record to generic record
+      System.out.println(                             //retrieve filename and content from records
+          r.get(FIELD_FILENAME) + ": " +
+          DigestUtils.md5Hex(((ByteBuffer) r.get(FIELD_CONTENTS)).array()));
     }
     IOUtils.cleanup(null, is);
     IOUtils.cleanup(null, reader);

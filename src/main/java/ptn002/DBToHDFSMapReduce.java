@@ -1,6 +1,5 @@
 package ptn002;
-
-/*
+/**
  * Import data from MySQL to HDFS
  * Create table in MySQL
  * DROP TABLE IF EXISTS `hadoop`.`studentinfo`; 

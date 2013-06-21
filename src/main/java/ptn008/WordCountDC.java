@@ -1,5 +1,8 @@
 package ptn008;
-
+/**
+ * By using symbolic link, it can directly use the symbolic to access the files 
+ * for processing.
+ */
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
@@ -23,6 +26,9 @@ import org.apache.hadoop.mapreduce.lib.output.TextOutputFormat;
 public class WordCountDC {
 	private static HashSet<String> strset = new HashSet<String>();
 	
+	/*
+	 * By using symbolic link, you do not need to download file to local
+	 */
     public static void UseDistributedCacheBySymbolicLink() throws Exception {
         FileReader reader = new FileReader("god.txt");
         BufferedReader br = new BufferedReader(reader);
@@ -35,7 +41,6 @@ public class WordCountDC {
         reader.close();
     }
     
-
     public static class Map extends Mapper<LongWritable, Text, Text, IntWritable> {
 
         public void setup(Context context) {

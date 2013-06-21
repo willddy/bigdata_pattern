@@ -1,5 +1,5 @@
 package ptn001;
-/*
+/**
  * MinimalMapReduceWithDefaults A minimal MapReduce driver, with the defaults explicitly set
  */
 import org.apache.hadoop.conf.Configured;

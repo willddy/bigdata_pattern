@@ -1,5 +1,5 @@
 package ptn001;
-/*
+/**
  * MinimalMapReduce The simplest possible MapReduce driver, which uses the defaults
  * and extends Configured implements Tool
  */

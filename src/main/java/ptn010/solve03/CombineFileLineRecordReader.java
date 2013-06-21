@@ -1,3 +1,5 @@
+package ptn010.solve03;
+
 import java.io.IOException;
 
 import org.apache.hadoop.fs.FSDataInputStream;
@@ -10,7 +12,7 @@ import org.apache.hadoop.mapreduce.TaskAttemptContext;
 import org.apache.hadoop.mapreduce.lib.input.CombineFileSplit;
 import org.apache.hadoop.util.LineReader;
 
-@SuppressWarnings("deprecation")
+
 public class CombineFileLineRecordReader extends RecordReader<MultiFileInputWritableComparable, Text> {
 
 	private long startOffset; // offset of the chunk;

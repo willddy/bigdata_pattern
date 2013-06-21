@@ -1,4 +1,4 @@
-package com.manning.hip.ch5;
+package ptn011;
 
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
@@ -9,7 +9,9 @@ import org.apache.hadoop.util.ReflectionUtils;
 
 import java.io.InputStream;
 import java.io.OutputStream;
-
+/**
+ * Read file from HDFS, compress it, and write back to HDFS
+ */
 public class CompressedFileWrite {
   public static void main(String... args) throws Exception {
     Configuration config = new Configuration();

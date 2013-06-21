@@ -1,6 +1,6 @@
 package common;
-/*
- * Used 
+/**
+ * Used to process hadoop jobs
  */
 import org.apache.commons.logging.*;
 import org.apache.hadoop.conf.Configuration;

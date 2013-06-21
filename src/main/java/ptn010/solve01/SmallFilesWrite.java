@@ -1,5 +1,8 @@
-package com.manning.hip.ch5;
-
+package ptn010.solve01;
+/**
+ * Using Avro to store multiple small files as record
+ * Reads a directory containing small files and produce a single Avro files in HDFS
+ */
 import org.apache.avro.Schema;
 import org.apache.avro.file.*;
 import org.apache.avro.generic.*;
@@ -17,36 +20,39 @@ public class SmallFilesWrite {
 
   public static final String FIELD_FILENAME = "filename";
   public static final String FIELD_CONTENTS = "contents";
-  private static final String SCHEMA_JSON = //<co id="ch02_smallfilewrite_comment1"/>
+  /*
+   * Avro use JSON to define the data structure per record
+   */
+  private static final String SCHEMA_JSON = 
           "{\"type\": \"record\", \"name\": \"SmallFilesTest\", "
           + "\"fields\": ["
           + "{\"name\":\"" + FIELD_FILENAME
           + "\", \"type\":\"string\"},"
           + "{\"name\":\"" + FIELD_CONTENTS
           + "\", \"type\":\"bytes\"}]}";
-  public static final Schema SCHEMA = Schema.parse(SCHEMA_JSON);
+  @SuppressWarnings("deprecation")
+public static final Schema SCHEMA = Schema.parse(SCHEMA_JSON);
 
-  public static void writeToAvro(File srcPath,
-          OutputStream outputStream)
+  public static void writeToAvro(File srcPath, OutputStream outputStream)
           throws IOException {
-    DataFileWriter<Object> writer =
+    @SuppressWarnings("resource")
+	DataFileWriter<Object> writer =
             new DataFileWriter<Object>(
-                new GenericDatumWriter<Object>())
-                .setSyncInterval(100);                 //<co id="ch02_smallfilewrite_comment2"/>
-    writer.setCodec(CodecFactory.snappyCodec());   //<co id="ch02_smallfilewrite_comment3"/>
-    writer.create(SCHEMA, outputStream);           //<co id="ch02_smallfilewrite_comment4"/>
+                new GenericDatumWriter<Object>()).setSyncInterval(100); //create a Avro writer
+    writer.setCodec(CodecFactory.snappyCodec());    
+    writer.create(SCHEMA, outputStream);  //associate the schema and output stream with writer
     for (Object obj : FileUtils.listFiles(srcPath, null, false)) {
       File file = (File) obj;
       String filename = file.getAbsolutePath();
       byte content[] = FileUtils.readFileToByteArray(file);
-      GenericRecord record = new GenericData.Record(SCHEMA);  //<co id="ch02_smallfilewrite_comment5"/>
-      record.put(FIELD_FILENAME, filename);                   //<co id="ch02_smallfilewrite_comment6"/>
-      record.put(FIELD_CONTENTS, ByteBuffer.wrap(content));   //<co id="ch02_smallfilewrite_comment7"/>
-      writer.append(record);                                  //<co id="ch02_smallfilewrite_comment8"/>
-      System.out.println(
-              file.getAbsolutePath()
-              + ": "
-              + DigestUtils.md5Hex(content));
+      GenericRecord record = new GenericData.Record(SCHEMA);  //a Avro generic wrapper around a rec.
+      record.put(FIELD_FILENAME, filename);                   
+      record.put(FIELD_CONTENTS, ByteBuffer.wrap(content));   
+      writer.append(record); 
+      /*
+       * add MD5 ease of visual compare
+       */
+      System.out.println(file.getAbsolutePath() + ": " + DigestUtils.md5Hex(content));
     }
 
     IOUtils.cleanup(null, writer);

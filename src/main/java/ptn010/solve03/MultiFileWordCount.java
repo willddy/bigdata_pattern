@@ -1,3 +1,5 @@
+package ptn010.solve03;
+
 import java.io.IOException;
 import java.util.StringTokenizer;
 
@@ -15,7 +17,6 @@ import org.apache.hadoop.util.GenericOptionsParser;
 import org.apache.hadoop.util.Tool;
 import org.apache.hadoop.util.ToolRunner;
 
-@SuppressWarnings("deprecation")
 public class MultiFileWordCount extends Configured implements Tool {
 
 
@@ -36,23 +37,19 @@ public class MultiFileWordCount extends Configured implements Tool {
     }
   }
   
-  private void printUsage() {
-    System.out.println("Usage : multifilewc <input_dir> <input_dir> <output>" );
-  }
 
   public int run(String[] args) throws Exception {
 
-
 	Configuration conf = new Configuration();
 	String[] otherArgs = new GenericOptionsParser(conf, args).getRemainingArgs();
-    if(otherArgs.length < 3) { //修改为3，前2个参数为输入文件，后1个为输出目录
-      printUsage();
+    if(otherArgs.length < 3) { 
+      System.out.println("Usage : multifilewc <input_dir> <input_dir> <output>" );
       return 2;
     }
 
     Job job = new Job(getConf());
     job.setJobName("MultiFileWordCount");
-    job.setJarByClass(MultiFileWordCount.class);
+    job.setJarByClass(getClass());
 
     //set the InputFormat of the job to our InputFormat
     job.setInputFormatClass(MyMultiFileInputFormat.class);
@@ -68,7 +65,7 @@ public class MultiFileWordCount extends Configured implements Tool {
     job.setCombinerClass(IntSumReducer.class);
     job.setReducerClass(IntSumReducer.class);
 
-    FileInputFormat.addInputPaths(job, otherArgs[0]);//修改为3，前2个参数为输入文件，后1个为输出目录
+    FileInputFormat.addInputPaths(job, otherArgs[0]);
     FileInputFormat.addInputPaths(job, otherArgs[1]);
     FileOutputFormat.setOutputPath(job, new Path(otherArgs[2]));
 

@@ -1,5 +1,5 @@
 package ptn001;
-/*
+/**
  * Key is word and value is index of files containing such words where file name 
  * is separated by ,
  */

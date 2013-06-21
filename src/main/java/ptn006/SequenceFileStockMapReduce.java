@@ -1,5 +1,5 @@
 package ptn006;
-/*
+/**
  * Process sequence file with default identity mapper and reducer
  */
 import org.apache.hadoop.conf.Configuration;

@@ -1,5 +1,7 @@
-package com.manning.hip.ch5;
-
+package ptn011;
+/**
+ * Read a file in HDFS, compress it, and write to standard output
+ */
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.FileSystem;
 import org.apache.hadoop.fs.Path;

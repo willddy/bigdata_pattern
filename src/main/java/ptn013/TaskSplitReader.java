@@ -1,4 +1,7 @@
-package com.manning.hip.ch13;
+package ptn013;
+/**
+ * Split reader to read content for each split dumped files for reading/troubleshooting
+ */
 
 import org.apache.commons.lang.builder.ToStringBuilder;
 import org.apache.commons.lang.builder.ToStringStyle;
@@ -26,8 +29,7 @@ public class TaskSplitReader {
     DataInputStream is =
         new DataInputStream(new FileInputStream(taskSplitFile));
 
-    JobSplit.TaskSplitIndex taskSplitIndex =
-        new JobSplit.TaskSplitIndex();
+    JobSplit.TaskSplitIndex taskSplitIndex = new JobSplit.TaskSplitIndex();
     taskSplitIndex.readFields(is);
     is.close();
 
@@ -35,14 +37,14 @@ public class TaskSplitReader {
         new Path(taskSplitIndex.getSplitLocation()),
         taskSplitIndex.getStartOffset());
 
-    System.out.println(
-        "InputSplit instance class = " + split.getClass().getName());
+    System.out.println("InputSplit instance class = " + split.getClass().getName());
     System.out.println("ToString on split = " + split);
     System.out.println("Reflection fields = " + ToStringBuilder
         .reflectionToString(split, ToStringStyle.SHORT_PREFIX_STYLE));
   }
 
-  public static <T> T getSplitDetails(Configuration conf, Path file,
+  @SuppressWarnings("unchecked")
+public static <T> T getSplitDetails(Configuration conf, Path file,
                                       long offset)
       throws IOException {
     FileSystem fs = file.getFileSystem(conf);

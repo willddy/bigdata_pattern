@@ -1,5 +1,5 @@
 package ptn005.slove01;
-/*
+/**
  * Write Avro files from HDFS
  */
 import org.apache.avro.file.CodecFactory;

@@ -1,5 +1,5 @@
 package ptn003;
-/*
+/**
  * Export data from HDFS to HBase using map and reduce
  */
 import java.io.IOException; 

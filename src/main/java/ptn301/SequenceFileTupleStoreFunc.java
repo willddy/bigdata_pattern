@@ -21,7 +21,8 @@ import java.io.IOException;
  */
 public class SequenceFileTupleStoreFunc extends StoreFunc {
 
-  protected RecordWriter writer;
+@SuppressWarnings("rawtypes")
+protected RecordWriter writer;
 
   private final String compressionType;
   private final String compressionCodecClass;
@@ -36,6 +37,7 @@ public class SequenceFileTupleStoreFunc extends StoreFunc {
     this.compressionCodecClass = compressionCodecClass;
   }
 
+  @SuppressWarnings("rawtypes")
   @Override
   public OutputFormat getOutputFormat() throws IOException {
     return new SequenceFileOutputFormat();
@@ -58,13 +60,15 @@ public class SequenceFileTupleStoreFunc extends StoreFunc {
     FileOutputFormat.setOutputPath(job, new Path(location));
   }
 
+  @SuppressWarnings("rawtypes")
   @Override
   public void prepareToWrite(RecordWriter writer) throws IOException {
     this.writer = writer;
   }
 
-    @Override
-    public void putNext(Tuple tuple) throws IOException {
+  @SuppressWarnings("unchecked")
+  @Override
+  public void putNext(Tuple tuple) throws IOException {
       System.out.println(tuple.getClass().getName());
       if (tuple != null) {
         try {
@@ -79,4 +83,5 @@ public class SequenceFileTupleStoreFunc extends StoreFunc {
         }
       }
     }
+
 }

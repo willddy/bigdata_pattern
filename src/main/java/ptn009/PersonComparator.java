@@ -1,5 +1,5 @@
 package ptn009;
-/*
+/**
  * Sorting
  */
 import org.apache.hadoop.io.*;

@@ -1,5 +1,5 @@
 package ptn009;
-/*
+/**
  * Total sorting without using single reducer
  */
 

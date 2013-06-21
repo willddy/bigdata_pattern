@@ -1,4 +1,7 @@
-// cc WholeFileInputFormat An InputFormat for reading a whole file as a record
+package ptn010.solve02;
+/**
+ * WholeFileInputFormat An InputFormat for reading a whole file as a record
+ */
 import java.io.IOException;
 import org.apache.hadoop.fs.*;
 import org.apache.hadoop.io.*;
@@ -8,16 +11,18 @@ import org.apache.hadoop.mapreduce.RecordReader;
 import org.apache.hadoop.mapreduce.TaskAttemptContext;
 import org.apache.hadoop.mapreduce.lib.input.*;
 
-//vv WholeFileInputFormat
 public class WholeFileInputFormat
     extends FileInputFormat<NullWritable, BytesWritable> {
   
   @Override
+  //disable split to process a file by a mapper
   protected boolean isSplitable(JobContext context, Path file) {
     return false;
   }
 
   @Override
+  //There is no need to create constructor since initialize() has the same function, 
+  //see LineRecordReader
   public RecordReader<NullWritable, BytesWritable> createRecordReader(
       InputSplit split, TaskAttemptContext context) throws IOException,
       InterruptedException {
@@ -26,4 +31,4 @@ public class WholeFileInputFormat
     return reader;
   }
 }
-//^^ WholeFileInputFormat
+
