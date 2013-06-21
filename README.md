@@ -31,7 +31,6 @@ Some code are collected for learning big data and hadoop and reusing at work.
 #### The ptn3xx is about Pig
 * __/java/ptn301:__ Pig customized store/load function for common log and sequencefile
 * __/java/ptn302:__ Pig UDF for LoadFunc, EvalFunc, and FilterFunc
-* __/java/ptn303:__ Pig UDF for LoadFunc, EvalFunc, and FilterFunc
 
 #### The ptn4xx is about HBase
 * __/java/ptn401:__ HBase CRUD Operations in terms of put, get, delete. 
