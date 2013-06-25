@@ -33,8 +33,9 @@ Some code are collected for learning big data and hadoop and reusing at work.
 * __/java/ptn302:__ Pig UDF for LoadFunc, EvalFunc, and FilterFunc
 
 #### The ptn4xx is about HBase
-* __/java/ptn401:__ HBase CRUD Operations in terms of put, get, delete. 
-* __/java/ptn402:__ HBase scan and row locking.
+* __/java/ptn401:__ HBase CRUD Operations in terms of put, get, delete
+* __/java/ptn402:__ HBase scan and row locking
+* __/java/ptn403:__ HBase imports data from other source
 
 ## Hadoop Version
 
