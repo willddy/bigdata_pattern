@@ -1,6 +1,6 @@
 package ptn003;
 /**
- * Export data from HDFS to HBase using map and reduce
+ * Export data from files to HBase using map and reduce
  */
 import java.io.IOException; 
 
@@ -19,7 +19,7 @@ import org.apache.hadoop.util.GenericOptionsParser;
 
 import common.HBaseHelper;
  
-public class HDFSToHBaseMapReduce { 
+public class FileToHBaseMapReduce { 
      
     public static class MapperClass extends Mapper<LongWritable,Text,ImmutableBytesWritable,Put>{   
         private Put put; 
@@ -76,7 +76,7 @@ public class HDFSToHBaseMapReduce {
             conf.set("QULIFIER3", qulifier3); 
              
             Job job=new Job(conf,"import data to hbase");   
-            job.setJarByClass(HDFSToHBaseMapReduce.class);   
+            job.setJarByClass(FileToHBaseMapReduce.class);   
             job.setMapperClass(MapperClass.class);   
             job.setMapOutputKeyClass(ImmutableBytesWritable.class);   
             job.setMapOutputValueClass(Put.class);   
@@ -111,7 +111,7 @@ public class HDFSToHBaseMapReduce {
         helper.createTable(tableName,family);
         
         // import data to HBase core
-        HDFSToHBaseMapReduce.runMyJob(args); 
+        FileToHBaseMapReduce.runMyJob(args); 
     } 
     
     

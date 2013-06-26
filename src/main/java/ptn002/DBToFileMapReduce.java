@@ -1,6 +1,6 @@
 package ptn002;
 /**
- * Import data from MySQL to HDFS
+ * Import data from MySQL to files
  * Create table in MySQL
  * DROP TABLE IF EXISTS `hadoop`.`studentinfo`; 
  * CREATE TABLE studentinfo (id INTEGER NOT NULL PRIMARY KEY, name VARCHAR(32) NOT NULL);
@@ -18,7 +18,7 @@ import org.apache.hadoop.mapreduce.lib.output.FileOutputFormat;
 import java.io.*;
 import java.sql.*;
 
-public class DBToHDFSMapReduce {  
+public class DBToFileMapReduce {  
   
    public static class StudentinfoRecord implements Writable, DBWritable {  
      int id;  
@@ -56,7 +56,7 @@ public class DBToHDFSMapReduce {
    public static void main(String[] args) throws IOException, Exception {  
 	   Configuration conf = new Configuration();
 	   Job job = new Job(conf);
-	   job.setJarByClass(DBToHDFSMapReduce.class);  
+	   job.setJarByClass(DBToFileMapReduce.class);  
 	   DistributedCache.addFileToClassPath(new Path(  
           "/lib/mysql-connector-java-5.1.0-bin.jar"), conf);  
        

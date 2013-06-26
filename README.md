@@ -7,9 +7,9 @@ Some code are collected for learning big data and hadoop and reusing at work.
 #### The ptn0xx is about MapReduce & HDFS
 * __/java/common:__ Commonly shared utility and tools
 * __/java/ptn001:__ Default MapReduce program, ToolRunner, Debug&Counter, Invert index sample
-* __/java/ptn002:__ Database to HDFS, HDFS to database
-* __/java/ptn003:__ HBase to HDFS, HDFS to HBase
-* __/java/ptn004:__ XML to HDFS, HDFS to XML, customized Inputformat for XML
+* __/java/ptn002:__ Database to file, file to database
+* __/java/ptn003:__ HBase to file and HFile, file to HBase, 
+* __/java/ptn004:__ XML to file, file to XML, customized Inputformat for XML
 * __/java/ptn005:__ Two ways to read and write Avro files
 * __/java/ptn006:__ Sequence file reader and writer, customized WritableComparable
 * __/java/ptn007:__ Customized key, value, InputFormat, RecordReader, Partitioner

@@ -1,6 +1,6 @@
 package ptn002;
 /**
- * Export data from HDFS to MySQL
+ * Export data from file to MySQL
  */
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -14,7 +14,7 @@ import org.apache.hadoop.mapreduce.lib.input.*;
 import java.io.*;
 import java.sql.*;
 
-public class HDFSToDBMapReduce {  
+public class FileToDBMapReduce {  
 	  
 	   public static class StudentinfoRecord implements Writable,  DBWritable {  
 	     int id;  
@@ -59,7 +59,7 @@ public class HDFSToDBMapReduce {
 	   public static void main(String[] args) throws IOException, Exception {  
 		 Configuration conf = new Configuration();
 		 Job job = new Job(conf);
-		 job.setJarByClass(HDFSToDBMapReduce.class);
+		 job.setJarByClass(FileToDBMapReduce.class);
 	     job.setInputFormatClass(TextInputFormat.class);  
 	     job.setOutputFormatClass(DBOutputFormat.class);  
 	     

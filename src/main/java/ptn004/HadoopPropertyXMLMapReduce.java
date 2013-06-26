@@ -1,6 +1,6 @@
 package ptn004;
 /**
- * Parser XML, find useful things and write to HDFS
+ * Parser XML, find useful things and write to files
  */
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;

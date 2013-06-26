@@ -1,6 +1,6 @@
 package ptn003;
 /**
- * Import data from HBase to HDFS using map and reduce
+ * Import data from HBase to Files using map and reduce
  */
 import org.apache.hadoop.conf.Configuration;
 import org.apache.hadoop.fs.Path;
@@ -17,7 +17,7 @@ import common.HBaseHelper;
 
 import java.io.IOException;
 
-public class HBaseToHDFSMapReduce
+public class HBaseToFileMapReduce
     extends Mapper<LongWritable, Text, LongWritable, Put> {
 
   @Override
@@ -39,11 +39,11 @@ public class HBaseToHDFSMapReduce
 
     Job job = new Job(conf);
 
-    job.setJarByClass(HBaseToHDFSMapReduce.class);
+    job.setJarByClass(HBaseToFileMapReduce.class);
 
     TableMapReduceUtil.initTableReducerJob("testtable",IdentityTableReducer.class,job);
 
-    job.setMapperClass(HBaseToHDFSMapReduce.class);
+    job.setMapperClass(HBaseToFileMapReduce.class);
 
     job.setMapOutputValueClass(Put.class);
 
