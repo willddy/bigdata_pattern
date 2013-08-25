@@ -31,6 +31,7 @@ public final class SimpleXmlOutputMapReduce {
     }
 
     private Text outputKey = new Text();
+    
     public void reduce(Text key, Iterable<Text> values,
                        Context context)
         throws IOException, InterruptedException {
@@ -42,9 +43,8 @@ public final class SimpleXmlOutputMapReduce {
 
     public static String constructPropertyXml(Text name, Text value) {
       StringBuilder sb = new StringBuilder();
-      sb.append("<property><name>").append(name)
-          .append("</name><value>").append(value)
-          .append("</value></property>");
+      sb.append("<property><name>").append(name).append("</name><value>").
+      append(value).append("</value></property>");
       return sb.toString();
     }
   }
@@ -53,9 +53,7 @@ public final class SimpleXmlOutputMapReduce {
     runJob(args[0], args[1]);
   }
 
-  public static void runJob(String input,
-                            String output)
-      throws Exception {
+  public static void runJob(String input, String output) throws Exception {
     Configuration conf = new Configuration();
 
     Job job = new Job(conf);

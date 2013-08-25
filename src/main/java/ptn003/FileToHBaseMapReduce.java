@@ -113,9 +113,5 @@ public class FileToHBaseMapReduce {
         // import data to HBase core
         FileToHBaseMapReduce.runMyJob(args); 
     } 
-    
-    
      
-    
- 
 }  

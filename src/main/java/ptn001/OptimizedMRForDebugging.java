@@ -63,8 +63,7 @@ public final class OptimizedMRForDebugging {
   public static class Reduce
       extends Reducer<Text, Text, Text, Text> {
 
-    public void reduce(Text key, Iterable<Text> values,
-                       Context context)
+    public void reduce(Text key, Iterable<Text> values, Context context)
         throws IOException, InterruptedException {
       if(log.isDebugEnabled()) {
         log.debug("Input K[{}]", key);

@@ -1,6 +1,6 @@
 package ptn005.slove01;
 /**
- * Read Avro files to HDFS
+ * Read Avro files in HDFS
  */
 import org.apache.avro.file.DataFileStream;
 import org.apache.avro.specific.SpecificDatumReader;

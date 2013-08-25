@@ -39,11 +39,10 @@ public class FileToDBMapReduce {
 	        stmt.setString(2, this.name);  
 	     }  
 	     public String toString() {  
-	        return new String(this.id + " " + this.name);  
+	        return new String(this.id + "/t" + this.name);  
 	     }  
 	   }  
-	   
-	    
+	   	    
 	   public static class MyReducer extends 
 	   Reducer<LongWritable, Text, StudentinfoRecord, Text> {  
 	     public void reduce(LongWritable key, Iterable<Text> values, Context context) 

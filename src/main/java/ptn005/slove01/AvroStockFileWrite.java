@@ -1,6 +1,6 @@
 package ptn005.slove01;
 /**
- * Write Avro files from HDFS
+ * Write Avro files back to HDFS after reading from HDFS
  */
 import org.apache.avro.file.CodecFactory;
 import org.apache.avro.file.DataFileWriter;

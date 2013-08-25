@@ -67,9 +67,7 @@ public final class HadoopPropertyXMLMapReduce {
     runJob(args[0], args[1]);
   }
 
-  public static void runJob(String input,
-                            String output)
-      throws Exception {
+  public static void runJob(String input, String output) throws Exception {
     Configuration conf = new Configuration();
     conf.set("key.value.separator.in.input.line", " ");
     conf.set("xmlinput.start", "<property>");

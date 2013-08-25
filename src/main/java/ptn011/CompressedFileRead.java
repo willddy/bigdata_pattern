@@ -19,8 +19,7 @@ public class CompressedFileRead {
     InputStream is = hdfs.open(new Path(args[0]));
 
     Class<?> codecClass = Class.forName(args[1]);
-    CompressionCodec codec = (CompressionCodec)
-        ReflectionUtils.newInstance(codecClass, config);
+    CompressionCodec codec = (CompressionCodec) ReflectionUtils.newInstance(codecClass, config);
 
     InputStream cis = codec.createInputStream(is);
 

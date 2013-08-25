@@ -25,7 +25,7 @@ public class MinimalMapReduce extends Configured implements Tool {
     
     Job job = new Job(getConf());
     job.setJarByClass(getClass());
-    FileInputFormat.addInputPath(job, new Path(args[0]));
+    FileInputFormat.addInputPath(job, new Path(args[0]));//append input path, can also use setInputPath(..)
     FileOutputFormat.setOutputPath(job, new Path(args[1]));
     return job.waitForCompletion(true) ? 0 : 1;
   }
@@ -35,4 +35,3 @@ public class MinimalMapReduce extends Configured implements Tool {
     System.exit(exitCode);
   }
 }
-

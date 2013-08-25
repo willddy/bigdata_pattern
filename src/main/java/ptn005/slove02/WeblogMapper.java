@@ -19,6 +19,7 @@ public class WeblogMapper extends MapReduceBase implements Mapper<LongWritable, 
     private AvroWrapper<WeblogRecord> outputRecord = new AvroWrapper<WeblogRecord>();
     private WeblogRecord weblogRecord = new WeblogRecord();
     private SimpleDateFormat dateFormatter = new SimpleDateFormat("yyyy-MM-dd:HH:mm:ss");
+    
     public void map(LongWritable key, Text value, OutputCollector<AvroWrapper, NullWritable> oc, Reporter rprtr) throws IOException {
         String[] tokens = value.toString().split("\t");
         String cookie = tokens[0];

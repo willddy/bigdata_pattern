@@ -21,7 +21,7 @@ import java.util.Arrays;
 import java.util.HashSet;
 
 public final class InvertedIndexMapReduce {
-  public static void main(String... args) throws Exception {
+  public static void main(String[] args) throws Exception {
 
     runJob(Arrays.copyOfRange(args, 0, args.length - 1),args[args.length - 1]);
   }
@@ -35,7 +35,7 @@ public final class InvertedIndexMapReduce {
     job.setMapperClass(Map.class);
     job.setReducerClass(Reduce.class);
 
-    job.setMapOutputKeyClass(Text.class); //this this by default
+    job.setMapOutputKeyClass(Text.class); 
     job.setMapOutputValueClass(Text.class); //this this by default
 
     Path outputPath = new Path(output);
@@ -43,7 +43,7 @@ public final class InvertedIndexMapReduce {
     FileInputFormat.setInputPaths(job, StringUtils.join(input, ","));
     FileOutputFormat.setOutputPath(job, outputPath);
 
-    outputPath.getFileSystem(conf).delete(outputPath, true);
+    outputPath.getFileSystem(conf).delete(outputPath, true); //delete if exist
 
     job.waitForCompletion(true);
   }
@@ -57,7 +57,7 @@ public final class InvertedIndexMapReduce {
     @Override
     protected void setup(Context context) {
       String filename =
-          ((FileSplit) context.getInputSplit()).getPath().getName();
+          ((FileSplit) context.getInputSplit()).getPath().getName();//get file name from each file split
       documentId = new Text(filename);
     }
 
@@ -87,4 +87,5 @@ public final class InvertedIndexMapReduce {
       context.write(key, docIds);
     }
   }
+
 }

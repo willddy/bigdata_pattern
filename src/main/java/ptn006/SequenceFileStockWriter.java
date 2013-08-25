@@ -33,8 +33,6 @@ public class SequenceFileStockWriter {
       for (String line : FileUtils.readLines(inputFile)) {   
         StockPriceWritable stock = StockPriceWritable.fromLine(line);
         key.set(stock.getSymbol());
-
-        key.set(stock.getSymbol());
         writer.append(key, stock);        //append a record to the sequence file
       }
     } finally {

@@ -76,4 +76,3 @@ class WholeFileRecordReader extends RecordReader<NullWritable, BytesWritable> {
     // do nothing
   }
 }
-//^^ WholeFileRecordReader

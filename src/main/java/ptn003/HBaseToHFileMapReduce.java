@@ -87,8 +87,8 @@ public class HBaseToHFileMapReduce {
 
 		String tableName = args[0];
 		Path inputDir = new Path(args[1]);
-		Job job = new Job(conf, "hac_chapter2_HBaseToHFileMapReduce");
-		job.setJarByClass(HourlyImporter.class);
+		Job job = new Job(conf, "HBaseToHFileMapReduce");
+		job.setJarByClass(HBaseToHFileMapReduce.class);
 		FileInputFormat.setInputPaths(job, inputDir);
 		job.setInputFormatClass(TextInputFormat.class);
 		job.setMapperClass(HourlyImporter.class);

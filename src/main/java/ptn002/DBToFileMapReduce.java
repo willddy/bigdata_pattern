@@ -46,6 +46,7 @@ public class DBToFileMapReduce {
         return new String(this.id + " " + this.name);  
      }  
    }  
+   
    public class DBInputMapper extends 
    Mapper <LongWritable, StudentinfoRecord, LongWritable, Text> {  
      public void map(LongWritable key, StudentinfoRecord value, Context context)  
@@ -53,6 +54,7 @@ public class DBToFileMapReduce {
         context.write(new LongWritable(value.id), new Text(value.toString()));  
      }  
    }  
+   
    public static void main(String[] args) throws IOException, Exception {  
 	   Configuration conf = new Configuration();
 	   Job job = new Job(conf);
