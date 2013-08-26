@@ -21,7 +21,7 @@ public class CombineFileLineRecordReader extends RecordReader<MultiFileInputWrit
 	private FileSystem fs;
 	private Path path; // path of hdfs
 	private MultiFileInputWritableComparable key;
-	private Text value; // value should be string(hadoop Text)
+	private Text value; // value should be string (hadoop Text)
 
 	private FSDataInputStream fileIn;
 	private LineReader reader;

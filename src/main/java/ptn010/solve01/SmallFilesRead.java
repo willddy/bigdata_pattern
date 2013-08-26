@@ -21,7 +21,7 @@ public class SmallFilesRead {
 
   public static void readFromAvro(InputStream is) throws IOException {
     /*
-     * create reader without schema since Avro encodes that i the Avro file
+     * create reader without schema since Avro encodes that in the Avro file
      */
 	  DataFileStream<Object> reader =               
         new DataFileStream<Object>(is, new GenericDatumReader<Object>());
